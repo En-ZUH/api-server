@@ -1,0 +1,49 @@
+'use strict';
+
+const express = require('express');
+const app = express();
+app.use(express.json());
+const morgan = require('morgan');
+const cors = require('cors');
+app.use(cors());
+app.use(morgan('dev'));
+
+
+const PORT = process.env.PORT || 4000;
+
+// Error handlers
+const notFoundHandler = require('./error-handlers/404');
+const errorHandler = require('./error-handlers/500');
+
+// the routes: 
+const foodRoute = require('./routes/food');
+const clothesRoute = require('./routes/clothes');
+
+// middleware
+const logger = require('./middleware/logger');
+app.use(logger);
+
+const { request, response } = require('express');
+
+
+
+let home = (request, response) => {
+    response.json('Welcome to home page 4 ');
+}
+
+let startServer = () => {
+    app.listen(PORT, () => {
+        console.log(`server is listening to port ${PORT}`);
+    });
+};
+
+app.get('/', home);
+app.use('/api/v1/food', foodRoute);
+app.use('/api/v1/clothes', clothesRoute);
+app.use('*', notFoundHandler);
+app.use(errorHandler);
+
+module.exports = {
+    server: app,
+    startServer: startServer,
+};
