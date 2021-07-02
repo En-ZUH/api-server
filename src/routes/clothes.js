@@ -8,7 +8,7 @@ const clothes = new Clothes(ClothesModel);
 
 let router = express.Router();
 
-const validator = require('../middleware/validator');
+const validator = require('../middleware/validator.js');
 
 
 // http://localhost:4500/api/v1/clothes/ 
@@ -17,8 +17,9 @@ const validator = require('../middleware/validator');
 
 
 let creatClothes = async (request, response, next) => {
-    let clothesObj = request.body;
+
     try {
+        let clothesObj = request.body;
         const responseObj = await clothes.creat(clothesObj);
         response.status(201).json(responseObj);
     }
@@ -80,10 +81,10 @@ let deleteClothes = async (request, response, next) => {
 //_________________________________________________________________________
 
 router.get('/', getClothes);
-router.get('/:id', Validator, getCertainClothes);
+router.get('/:id', getCertainClothes);
 router.post('/', creatClothes);
-router.put('/:id', Validator, updateClothes);
-router.delete('/:id', Validator, deleteClothes);
+router.put('/:id', updateClothes);
+router.delete('/:id', deleteClothes);
 
 //_________________________________________________________________________
 

@@ -5,24 +5,24 @@ class Interface {
         this.myModel = myModel;
     }
 
-    get(id) {
-        if (id)
-            return this.myModel.find({ id });
+    get(_id) {
+        if (_id)
+            return this.myModel.find({ _id });
         else
             return this.myModel.find({});
     }
 
     creat(object) {
         const document = new this.myModel(object);
-        return document.save;
+        return document.save();
     }
 
-    update(id, object) {
-        return this.myModel.findByIdThenUpdate(id, object, { new: true });
+    update(_id, object) {
+        return this.myModel.findByIdAndUpdate(_id, object, { new: true });
     }
 
-    update(id) {
-        return this.myModel.findByIdThenDelete(id);
+    delete(_id) {
+        return this.myModel.findByIdAndDelete(_id);
     }
 }
 
