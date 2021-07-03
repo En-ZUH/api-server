@@ -9,7 +9,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4500;
 
 // Error handlers
 const notFoundHandler = require('./error-handlers/404');
@@ -23,12 +23,11 @@ const clothesRoute = require('./routes/clothes');
 const logger = require('./middleware/logger');
 app.use(logger);
 
-const { request, response } = require('express');
 
 
 
 let home = (request, response) => {
-    response.json('Welcome to home page 4 ');
+    response.send('Welcome to home page 4');
 }
 
 let startServer = () => {

@@ -48,7 +48,7 @@ let getCertainFood = async (request, response, next) => { //by id
     let id = request.params.id;
     try {
         const responseObj = await food.get(id);
-        response.json(responseObj[0]);
+        response.json(responseObj);
     }
     catch (error) { next(error) };
 }
@@ -78,12 +78,12 @@ let deleteFood = async (request, response, next) => {
 }
 
 //_________________________________________________________________________
-
+//: /food
 router.get('/', getFood);
-router.get('/:id', Validator, getCertainFood);
+router.get('/:id', getCertainFood);
 router.post('/', creatFood);
-router.put('/:id', Validator, updateFood);
-router.delete('/:id', Validator, deleteFood);
+router.put('/:id', updateFood);
+router.delete('/:id', deleteFood);
 
 //_________________________________________________________________________
 
