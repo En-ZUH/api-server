@@ -9,7 +9,7 @@ app.use(cors());
 app.use(morgan('dev'));
 
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4500;
 
 // Error handlers
 const notFoundHandler = require('./error-handlers/404');
