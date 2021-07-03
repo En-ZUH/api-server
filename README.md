@@ -10,7 +10,7 @@
 * [Pull request](https://github.com/En-ZUH/api-server/pulls)
 * [Github Actions](https://github.com/En-ZUH/api-server/actions/new)
 
-* [Deployed App to Heroku /production]( )
+* [Deployed App to Heroku /production](https://api-server-enas.herokuapp.com/)
 
 ## Setup
 
@@ -68,4 +68,4 @@
 
 ## Uml Diagram
 
-![img]( )
+ 
