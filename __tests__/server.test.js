@@ -162,7 +162,7 @@ describe('Testing food', () => {
         expect(response.body.type).toEqual('chocolate');
     });
 
-    it(('test update food'), async () => {
+    it(('test delete food'), async () => {
         const response = await request.delete(`/api/v1/food/${id}`);
 
 
